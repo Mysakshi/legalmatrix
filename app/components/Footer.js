@@ -1,6 +1,7 @@
 'use client';
 
 import { Scale, MapPin, Phone, Mail, Globe } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 // Simple social SVG icons
 const SocialIcons = {
@@ -54,102 +55,141 @@ const footerSections = [
     },
 ];
 
+const container = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1
+        }
+    }
+};
+
+const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+};
+
 export default function Footer() {
     const year = new Date().getFullYear();
 
     return (
         <footer
+            className="overflow-hidden"
             style={{
                 background: 'linear-gradient(180deg, #0a1540 0%, #0f1f5c 50%, #111827 100%)',
             }}
         >
-            <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
+            <motion.div
+                variants={container}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="max-w-7xl mx-auto px-6 pt-16 pb-8"
+            >
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     {/* Brand */}
-                    <div className="lg:col-span-2">
+                    <motion.div variants={item} className="lg:col-span-2">
                         <div className="flex items-center gap-3 mb-5">
-                            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1E3A8A] to-[#2d54c4] flex items-center justify-center">
+                            <motion.div
+                                whileHover={{ rotate: 10, scale: 1.1 }}
+                                className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1E3A8A] to-[#2d54c4] flex items-center justify-center shadow-lg"
+                            >
                                 <Scale className="w-6 h-6 text-white" />
-                            </div>
+                            </motion.div>
                             <div>
                                 <div>
-                                    <span className="text-2xl font-black text-white tracking-tight">LEGAL</span>
-                                    <span className="text-2xl font-black text-secondary tracking-tight">MATRIX</span>
+                                    <span className="text-2xl font-black text-white tracking-tight uppercase">LEGAL</span>
+                                    <span className="text-2xl font-black text-secondary tracking-tight uppercase">MATRIX</span>
                                 </div>
-                                <p className="text-[10px] text-gray-500 font-medium">Legal & Compliance Solutions</p>
+                                <p className="text-[10px] text-gray-500 font-medium uppercase tracking-widest">Legal & Compliance Solutions</p>
                             </div>
                         </div>
-                        <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm">
+                        <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm font-medium">
                             Your trusted partner in co-operative housing legal compliance. Providing tailored legal solutions ensuring full compliance with MCS Act 1960.
                         </p>
 
                         {/* Contact info */}
-                        <div className="space-y-2.5 mb-6">
+                        <div className="space-y-3 mb-8">
                             {[
                                 { icon: MapPin, text: 'A-109 & B1-110, Clover Centre, Camp, Pune - 411001' },
                                 { icon: Phone, text: '7377033000' },
                                 { icon: Mail, text: 'office@legalmatrixindia.com' },
                                 { icon: Globe, text: 'www.legalmatrixindia.com' },
                             ].map((c) => (
-                                <div key={c.text} className="flex items-start gap-2.5">
-                                    <c.icon className="w-4 h-4 text-secondary mt-0.5 flex-shrink-0" />
-                                    <span className="text-gray-400 text-xs leading-relaxed">{c.text}</span>
-                                </div>
+                                <motion.div
+                                    key={c.text}
+                                    whileHover={{ x: 5 }}
+                                    className="flex items-start gap-2.5 group cursor-default"
+                                >
+                                    <c.icon className="w-4 h-4 text-secondary mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                                    <span className="text-gray-400 text-xs leading-relaxed font-medium group-hover:text-white transition-colors">{c.text}</span>
+                                </motion.div>
                             ))}
                         </div>
 
                         {/* Social icons */}
                         <div className="flex gap-3">
                             {Object.entries(SocialIcons).map(([name, Icon]) => (
-                                <a
+                                <motion.a
                                     key={name}
+                                    whileHover={{ y: -5, backgroundColor: '#1E3A8A', borderColor: '#1E3A8A', color: 'white' }}
+                                    whileTap={{ scale: 0.9 }}
                                     href="#"
-                                    className="w-9 h-9 rounded-lg border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-[#1E3A8A] hover:border-[#1E3A8A] transition-all duration-300"
-                                    style={{ background: 'rgba(255,255,255,0.05)' }}
+                                    className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-gray-400 transition-all duration-300 bg-white/5"
                                 >
                                     <Icon />
-                                </a>
+                                </motion.a>
                             ))}
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Links */}
                     {footerSections.map((section) => (
-                        <div key={section.title}>
-                            <h4 className="text-white font-bold text-sm mb-5 uppercase tracking-widest">
+                        <motion.div variants={item} key={section.title}>
+                            <h4 className="text-white font-black text-sm mb-6 uppercase tracking-widest">
                                 {section.title}
                             </h4>
-                            <ul className="space-y-3">
+                            <ul className="space-y-4">
                                 {section.links.map((link) => (
                                     <li key={link.label}>
-                                        <a
+                                        <motion.a
+                                            whileHover={{ x: 5 }}
                                             href={link.href}
-                                            className="text-gray-400 text-sm hover:text-[#F59E0B] transition-colors duration-200 flex items-center gap-2 group"
+                                            className="text-gray-400 text-sm hover:text-secondary transition-colors duration-200 flex items-center gap-2 group font-medium"
                                         >
-                                            <span className="w-1 h-1 rounded-full bg-[#F59E0B] opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
+                                            <span className="w-1 h-1 rounded-full bg-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
                                             {link.label}
-                                        </a>
+                                        </motion.a>
                                     </li>
                                 ))}
                             </ul>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
                 {/* Divider */}
-                <div className="border-t border-white/8 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-                    <p className="text-gray-500 text-xs">
+                <motion.div
+                    variants={item}
+                    className="border-t border-white/5 pt-10 flex flex-col sm:flex-row justify-between items-center gap-6"
+                >
+                    <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">
                         © {year} LegalMatrix. All rights reserved.
                     </p>
-                    <div className="flex gap-6">
+                    <div className="flex gap-8">
                         {['Privacy Policy', 'Terms of Service', 'Disclaimer'].map((l) => (
-                            <a key={l} href="#" className="text-gray-500 text-xs hover:text-gray-300 transition-colors">
+                            <motion.a
+                                key={l}
+                                whileHover={{ color: 'white' }}
+                                href="#"
+                                className="text-gray-500 text-[10px] font-black uppercase tracking-widest hover:text-gray-300 transition-colors"
+                            >
                                 {l}
-                            </a>
+                            </motion.a>
                         ))}
                     </div>
-                </div>
-            </div>
+                </motion.div>
+            </motion.div>
         </footer>
     );
 }
