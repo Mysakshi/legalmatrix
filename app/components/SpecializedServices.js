@@ -9,20 +9,22 @@ const specializedGroups = [
         color: '#1E3A8A',
         items: [
             'Formation of CHS',
-            'Society Handover',
-            'DDR Office',
-            'Society Maintenance',
+            'Society Handover from Builder',
+            'Society Handover from DDR Office',
+            'Defunct Society Compliances',
+            'Demarcation (Mojani) of Society Land',
         ],
     },
     {
-        title: 'Compliance & Audit',
+        title: 'Audit & Compliance',
         icon: '📋',
         color: '#F59E0B',
         items: [
-            'Society Legal Monthly Compliance',
+            'Society Advance Maintenance Audit',
+            'Society Legal Monthly Compliances',
             'Defaulter Management',
-            'Audit Services',
-            'Society Conveyance',
+            'Audit Services (Long Pending)',
+            'Society NCLT Compliances',
         ],
     },
     {
@@ -31,9 +33,10 @@ const specializedGroups = [
         color: '#10B981',
         items: [
             'Society Redevelopment',
-            'Demarcation',
-            'Name Change',
-            'NCLT Services',
+            'Society Conveyance Deed',
+            'Society Deemed Conveyance',
+            'Name Change on 7/12 Extract',
+            'Consultancy / General Services',
         ],
     },
 ];
@@ -61,7 +64,6 @@ export default function SpecializedServices() {
             style={{ backgroundColor: '#ffffff' }}
         >
             <div className="max-w-7xl mx-auto">
-                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -102,51 +104,47 @@ export default function SpecializedServices() {
                             key={group.title}
                             variants={item}
                             whileHover={{ y: -10 }}
-                            className="group relative glass-card-light rounded-3xl overflow-hidden shadow-md border border-white/50 hover:shadow-2xl transition-all duration-400 card-shine"
+                            className="group relative glass-card-light rounded-3xl overflow-hidden shadow-sm border border-white/50 hover:shadow-2xl transition-all duration-400 card-shine flex flex-col pt-1"
                         >
-                            {/* Decorative background glow per card */}
                             <div
                                 className="absolute -top-10 -right-10 w-32 h-32 blur-3xl rounded-full opacity-10 group-hover:opacity-20 transition-opacity"
                                 style={{ background: group.color }}
                             />
 
-                            {/* Top gradient header */}
                             <div
-                                className="px-6 pt-8 pb-6 border-b border-gray-100"
+                                className="px-6 pt-5 pb-5 border-b border-gray-100"
                                 style={{ background: `linear-gradient(135deg, ${group.color}11, transparent)` }}
                             >
                                 <motion.div
                                     whileHover={{ scale: 1.1, rotate: 5 }}
-                                    className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl mb-4 shadow-sm relative z-10"
+                                    className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-4 shadow-sm relative z-10"
                                     style={{ background: group.color }}
                                 >
                                     <span>{group.icon}</span>
                                 </motion.div>
                                 <h3
-                                    className="text-xl font-black tracking-tight"
+                                    className="text-lg font-black tracking-tight uppercase"
                                     style={{ color: group.color }}
                                 >
                                     {group.title}
                                 </h3>
                             </div>
 
-                            {/* Items */}
-                            <div className="px-6 pb-8 pt-6 space-y-4">
+                            <div className="px-6 pb-8 pt-6 space-y-4 flex-grow">
                                 {group.items.map((item, idx) => (
-                                    <div key={item} className="flex items-center gap-3 group/item">
+                                    <div key={item} className="flex items-start gap-3 group/item">
                                         <motion.div
                                             initial={{ scale: 0 }}
                                             whileInView={{ scale: 1 }}
                                             transition={{ delay: 0.5 + (idx * 0.1) }}
-                                            className="w-2 h-2 rounded-full flex-shrink-0 transition-transform duration-200 group-hover/item:scale-150"
+                                            className="w-2 h-2 rounded-full flex-shrink-0 mt-1 transition-transform duration-200 group-hover/item:scale-150"
                                             style={{ background: group.color }}
                                         />
-                                        <span className="text-gray-700 text-sm font-bold group-hover/item:text-primary transition-colors tracking-tight uppercase tracking-widest text-[11px]">{item}</span>
+                                        <span className="text-gray-700 font-black group-hover/item:text-primary transition-colors tracking-widest text-[10px] leading-relaxed uppercase">{item}</span>
                                     </div>
                                 ))}
                             </div>
 
-                            {/* Bottom accent */}
                             <div
                                 className="absolute bottom-0 left-0 right-0 h-1.5 opacity-70 group-hover:opacity-100 transition-opacity duration-300"
                                 style={{ background: `linear-gradient(90deg, ${group.color}, transparent)` }}

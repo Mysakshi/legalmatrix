@@ -9,6 +9,7 @@ const navLinks = [
   { label: 'About', href: '/about' },
   { label: 'Services', href: '/services' },
   { label: 'Team', href: '/team' },
+  { label: 'Clients', href: '/clients' },
   { label: 'Contact', href: '/contact' },
 ];
 
@@ -60,18 +61,12 @@ export default function Navbar() {
         {/* Logo */}
         <a href="/" className="flex items-center gap-3 group">
           <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="w-12 h-12 rounded-2xl bg-gradient-to-br from-secondary to-secondary-dark flex items-center justify-center shadow-lg"
+            whileHover={{ scale: 1.05 }}
+            className={`flex-shrink-0 transition-all duration-300 rounded-xl flex items-center justify-center ${scrolled ? 'h-12 sm:h-14 py-1' : 'h-12 sm:h-14 bg-white/95 shadow-[0_0_20px_rgba(255,255,255,0.1)] px-3 py-1.5'
+              }`}
           >
-            <Scale className="w-6 h-6 text-[#0f172a]" />
+            <img src="/images/logo1.png" alt="LegalMatrix" className="h-full w-auto object-contain" />
           </motion.div>
-          <div className="flex flex-col">
-            <div className="flex items-center">
-              <span className={`text-2xl font-black tracking-tighter ${scrolled ? 'text-primary' : 'text-white'}`}>LEGAL</span>
-              <span className="text-2xl font-black text-secondary tracking-tighter">MATRIX</span>
-            </div>
-            <p className={`text-[10px] leading-none font-bold uppercase tracking-widest ${scrolled ? 'text-gray-400' : 'text-white/50'}`}>Excellence & Trust</p>
-          </div>
         </a>
 
         {/* Desktop links */}

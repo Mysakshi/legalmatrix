@@ -1,6 +1,7 @@
 import PageHero from '../components/PageHero';
 import About from '../components/About';
 import Principles from '../components/Principles';
+import Firms from '../components/Firms';
 
 export const metadata = {
     title: 'About Us — LegalMatrix',
@@ -17,6 +18,7 @@ export default function AboutPage() {
             />
             <About />
             <Principles />
+            <Firms />
         </main>
     );
 }

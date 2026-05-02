@@ -73,7 +73,7 @@ export default function Hero() {
                         <span className="text-sm font-semibold text-white/90 uppercase tracking-widest">Premium Consultancy</span>
                     </motion.div>
 
-                    {/* Logo / Brand */}
+                    {/* Brand */}
                     <div className="mb-6">
                         <motion.h1
                             initial={{ opacity: 0, y: 30 }}
@@ -107,7 +107,7 @@ export default function Hero() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1, duration: 0.8 }}
-                        className="text-lg text-white/70 mb-10 max-w-lg leading-relaxed font-medium"
+                        className="text-lg text-white/70 mb-10 max-w-lg leading-relaxed font-medium text-justify"
                     >
                         End-to-end legal advisory and compliance support for housing societies, ensuring transparency and legal peace of mind.
                     </motion.p>

@@ -47,6 +47,10 @@
     background: white;
     overflow-x: hidden;
   }
+
+  p {
+    text-align: justify;
+  }
 }
 
 @layer utilities {

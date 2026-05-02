@@ -48,7 +48,6 @@ const footerSections = [
             { label: 'About Us', href: '#about' },
             { label: 'Our Team', href: '#team' },
             { label: 'Our Firms', href: '#firms' },
-            { label: 'AMC Services', href: '#amc' },
             { label: 'Principles', href: '#principles' },
             { label: 'Contact', href: '#contact' },
         ],
@@ -66,7 +65,7 @@ const container = {
 };
 
 const item = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 15 },
     show: { opacity: 1, y: 0 }
 };
 
@@ -85,80 +84,84 @@ export default function Footer() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true }}
-                className="max-w-7xl mx-auto px-6 pt-16 pb-8"
+                className="max-w-7xl mx-auto px-6 pt-12 pb-6"
             >
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-                    {/* Brand */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-10 mb-8">
+                    {/* Brand & Contact details */}
                     <motion.div variants={item} className="lg:col-span-2">
-                        <div className="flex items-center gap-3 mb-5">
+                        <div className="flex items-center mb-6">
                             <motion.div
-                                whileHover={{ rotate: 10, scale: 1.1 }}
-                                className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1E3A8A] to-[#2d54c4] flex items-center justify-center shadow-lg"
+                                whileHover={{ scale: 1.05 }}
+                                className="h-14 sm:h-16 w-auto flex-shrink-0 bg-white/95 p-3 rounded-2xl shadow-lg shadow-black/20"
                             >
-                                <Scale className="w-6 h-6 text-white" />
+                                <img src="/images/logo1.png" alt="LegalMatrix Logo" className="h-full w-auto object-contain" />
                             </motion.div>
-                            <div>
-                                <div>
-                                    <span className="text-2xl font-black text-white tracking-tight uppercase">LEGAL</span>
-                                    <span className="text-2xl font-black text-secondary tracking-tight uppercase">MATRIX</span>
-                                </div>
-                                <p className="text-[10px] text-gray-500 font-medium uppercase tracking-widest">Legal & Compliance Solutions</p>
-                            </div>
                         </div>
-                        <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-sm font-medium">
-                            Your trusted partner in co-operative housing legal compliance. Providing tailored legal solutions ensuring full compliance with MCS Act 1960.
+                        <p className="text-gray-400 text-xs leading-relaxed mb-6 max-w-sm font-medium">
+                            Your trusted partner in co-operative housing legal compliance. Ensuring full compliance with MCS Act 1960.
                         </p>
 
-                        {/* Contact info */}
-                        <div className="space-y-3 mb-8">
-                            {[
-                                { icon: MapPin, text: 'A-109 & B1-110, Clover Centre, Camp, Pune - 411001' },
-                                { icon: Phone, text: '7377033000' },
-                                { icon: Mail, text: 'office@legalmatrixindia.com' },
-                                { icon: Globe, text: 'www.legalmatrixindia.com' },
-                            ].map((c) => (
-                                <motion.div
-                                    key={c.text}
-                                    whileHover={{ x: 5 }}
-                                    className="flex items-start gap-2.5 group cursor-default"
-                                >
-                                    <c.icon className="w-4 h-4 text-secondary mt-0.5 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                                    <span className="text-gray-400 text-xs leading-relaxed font-medium group-hover:text-white transition-colors">{c.text}</span>
+                        <div className="space-y-3 mb-5">
+                            <p className="text-white text-[10px] font-bold uppercase tracking-widest border-b border-white/10 pb-1 mb-2">Our Offices</p>
+
+                            <div className="flex flex-col gap-2.5">
+                                <motion.div whileHover={{ x: 5 }} className="flex items-start gap-2 group cursor-default">
+                                    <MapPin className="w-3.5 h-3.5 text-secondary mt-0.5 flex-shrink-0" />
+                                    <span className="text-gray-400 text-xs leading-snug font-medium"><strong className="text-white opacity-90 mr-1 font-bold">Corp:</strong>A-109, Clover Centre, Camp, Pune - 411001</span>
                                 </motion.div>
-                            ))}
+                                <motion.div whileHover={{ x: 5 }} className="flex items-start gap-2 group cursor-default">
+                                    <MapPin className="w-3.5 h-3.5 text-gray-500 mt-0.5 flex-shrink-0 group-hover:text-white transition-colors" />
+                                    <span className="text-gray-400 text-xs leading-snug font-medium"><strong className="text-white opacity-80 mr-1 font-bold">Br 1:</strong>A-108 Bliss County, Charholi Budruk, Pune - 412105</span>
+                                </motion.div>
+                                <motion.div whileHover={{ x: 5 }} className="flex items-start gap-2 group cursor-default">
+                                    <MapPin className="w-3.5 h-3.5 text-gray-500 mt-0.5 flex-shrink-0 group-hover:text-white transition-colors" />
+                                    <span className="text-gray-400 text-xs leading-snug font-medium"><strong className="text-white opacity-80 mr-1 font-bold">Br 2:</strong>Flat 101, Srimoti Apts, Salunkhe Vihar Road, Kondhwa, Pune – 411048</span>
+                                </motion.div>
+                            </div>
                         </div>
 
-                        {/* Social icons */}
-                        <div className="flex gap-3">
-                            {Object.entries(SocialIcons).map(([name, Icon]) => (
-                                <motion.a
-                                    key={name}
-                                    whileHover={{ y: -5, backgroundColor: '#1E3A8A', borderColor: '#1E3A8A', color: 'white' }}
-                                    whileTap={{ scale: 0.9 }}
-                                    href="#"
-                                    className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-gray-400 transition-all duration-300 bg-white/5"
-                                >
-                                    <Icon />
-                                </motion.a>
-                            ))}
+                        {/* Contact & Socials Inline */}
+                        <div className="flex flex-wrap items-center gap-4 pt-4 border-t border-white/5">
+                            <motion.a href="tel:7377033000" whileHover={{ y: -1 }} className="flex items-center gap-1.5 group">
+                                <Phone className="w-3.5 h-3.5 text-gray-400 group-hover:text-primary transition-colors" />
+                                <span className="text-gray-400 text-xs font-bold group-hover:text-white transition-colors">7377033000</span>
+                            </motion.a>
+                            <motion.a href="mailto:office@legalmatrixindia.com" whileHover={{ y: -1 }} className="flex items-center gap-1.5 group">
+                                <Mail className="w-3.5 h-3.5 text-gray-400 group-hover:text-primary transition-colors" />
+                                <span className="text-gray-400 text-xs font-bold group-hover:text-white transition-colors">office@legalmatrixindia.com</span>
+                            </motion.a>
+
+                            <div className="flex gap-2 ml-auto">
+                                {Object.entries(SocialIcons).map(([name, Icon]) => (
+                                    <motion.a
+                                        key={name}
+                                        whileHover={{ y: -2, backgroundColor: '#1E3A8A', color: 'white' }}
+                                        href="#"
+                                        className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 transition-all duration-300"
+                                    >
+                                        <div className="scale-75"><Icon /></div>
+                                    </motion.a>
+                                ))}
+                            </div>
                         </div>
                     </motion.div>
 
-                    {/* Links */}
+                    {/* Links - compact sizes */}
                     {footerSections.map((section) => (
                         <motion.div variants={item} key={section.title}>
-                            <h4 className="text-white font-black text-sm mb-6 uppercase tracking-widest">
+                            <h4 className="text-white font-black text-xs mb-4 uppercase tracking-widest relative inline-block">
                                 {section.title}
+                                <div className="absolute -bottom-1.5 left-0 w-1/2 h-0.5 bg-secondary/50 rounded-full" />
                             </h4>
-                            <ul className="space-y-4">
+                            <ul className="space-y-2.5 pt-1">
                                 {section.links.map((link) => (
                                     <li key={link.label}>
                                         <motion.a
-                                            whileHover={{ x: 5 }}
+                                            whileHover={{ x: 3 }}
                                             href={link.href}
-                                            className="text-gray-400 text-sm hover:text-secondary transition-colors duration-200 flex items-center gap-2 group font-medium"
+                                            className="text-gray-400 text-xs hover:text-white transition-colors duration-200 flex items-center gap-2 group font-medium"
                                         >
-                                            <span className="w-1 h-1 rounded-full bg-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex-shrink-0" />
+                                            <span className="w-1 h-1 rounded-full bg-secondary opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
                                             {link.label}
                                         </motion.a>
                                     </li>
@@ -168,21 +171,23 @@ export default function Footer() {
                     ))}
                 </div>
 
-                {/* Divider */}
+                {/* Bottom Bar */}
                 <motion.div
                     variants={item}
-                    className="border-t border-white/5 pt-10 flex flex-col sm:flex-row justify-between items-center gap-6"
+                    className="border-t border-white/10 pt-5 mt-8 flex flex-col md:flex-row justify-between items-center gap-4"
                 >
-                    <p className="text-gray-500 text-xs font-bold uppercase tracking-widest">
-                        © {year} LegalMatrix. All rights reserved.
+                    <p className="text-gray-500 text-[10px] font-bold uppercase tracking-widest flex items-center gap-2">
+                        <span>© {year} LegalMatrix</span>
+                        <span className="w-1 h-1 bg-gray-600 rounded-full" />
+                        <span>All rights reserved.</span>
                     </p>
-                    <div className="flex gap-8">
+                    <div className="flex flex-wrap justify-center gap-6">
                         {['Privacy Policy', 'Terms of Service', 'Disclaimer'].map((l) => (
                             <motion.a
                                 key={l}
                                 whileHover={{ color: 'white' }}
                                 href="#"
-                                className="text-gray-500 text-[10px] font-black uppercase tracking-widest hover:text-gray-300 transition-colors"
+                                className="text-gray-500 text-[9px] font-black uppercase tracking-widest hover:text-gray-300 transition-colors"
                             >
                                 {l}
                             </motion.a>

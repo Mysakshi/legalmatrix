@@ -52,7 +52,7 @@ const item = {
 
 export default function Principles() {
     return (
-        <section id="principles" className="section-padding bg-white scroll-mt-20 overflow-hidden">
+        <section id="principles" className="pt-10 pb-24 px-6 bg-white scroll-mt-20 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
