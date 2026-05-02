@@ -79,17 +79,10 @@ export default function Hero() {
                             initial={{ opacity: 0, y: 30 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4, duration: 0.8 }}
-                            className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-ultra-tight leading-[0.85] text-balance"
+                            className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-none text-balance"
                         >
-                            <span className="text-white block">LEGAL</span>
-                            <motion.span
-                                initial={{ x: -20, opacity: 0 }}
-                                animate={{ x: 0, opacity: 1 }}
-                                transition={{ delay: 0.6, duration: 0.8 }}
-                                className="text-secondary block"
-                            >
-                                MATRIX
-                            </motion.span>
+                            <span className="text-white">LEGAL </span>
+                            <span className="text-secondary">MATRIX</span>
                         </motion.h1>
                     </div>
 
@@ -98,9 +91,9 @@ export default function Hero() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.8, duration: 0.8 }}
-                        className="text-2xl sm:text-3xl font-light text-white/90 mb-6 leading-tight tracking-tight text-balance"
+                        className="text-xl sm:text-2xl font-medium text-white/90 mb-6 leading-relaxed tracking-wide"
                     >
-                        Your Partner in <span className="text-secondary font-bold">Co-Operative Housing</span> Success
+                        Your Partner in Co-Operative Housing Success
                     </motion.p>
 
                     <motion.p
